@@ -1,19 +1,31 @@
 require 'pry'
 def select_cards(possible_cards, hand)
 
-  possible_cards.each do |current_card|
-    print "Do you want to pick up #{current_card}?"
-    answer = gets.chomp
-    # binding.pry
-    if answer.downcase == 'y'
-      hand << current_card
-      if hand.length == 3
-        puts
-        puts "You have selected #{hand.length} cards, you cannot select any more"
-        puts
-        return hand
+  while hand.length < 3
+    possible_cards.each do |current_card|
+      # binding.pry
+      # if answer.downcase == 'y'
+      #   hand << current_card
+      #   if hand.length == 3
+      #     puts
+      #     puts "You have selected #{hand.length} cards, you cannot select any more"
+      #     puts
+      #     return hand
+      #   end
+      # end
+        print "Do you want to pick up #{current_card}?"
+        answer = gets.chomp
+        if answer.downcase == 'y'
+          hand << current_card
+            if hand.length == 3
+              puts
+              puts "You have selected #{hand.length} cards, you cannot select any more"
+              puts
+              return hand
+            end
+        end
       end
-    end
+
   end
 
   return hand
